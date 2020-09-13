@@ -85,7 +85,7 @@ if ($PackageProvider.Version -ge "2.8.5"){
         try {
             # PowerShellGet module was not found, attempt to install from repository
             Write-Output "PowerShellGet module was not found, attempting to install it including dependencies from repository" 
-            Write-Output"Attempting to install PackageManagement module from repository" 
+            Write-Output "Attempting to install PackageManagement module from repository" 
             Install-Module -Name "PackageManagement" -Force -Scope AllUsers -AllowClobber -ErrorAction Stop -Verbose:$false
             Write-Output "Attempting to install PowerShellGet module from repository" 
             Install-Module -Name "PowerShellGet" -Force -Scope AllUsers -AllowClobber -ErrorAction Stop -Verbose:$false
