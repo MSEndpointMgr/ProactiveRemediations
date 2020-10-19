@@ -1,3 +1,9 @@
+# HP HPCMLS Detection Script 
+# Created by: 
+# Jan Ketil Skanke & Maurice Daly 
+# MSEndpointMgr.com 
+
+# Start Detection
 # Validate that script is executed on HP hardware
 $Manufacturer = (Get-WmiObject -Class "Win32_ComputerSystem" | Select-Object -ExpandProperty Manufacturer).Trim()
 switch -Wildcard ($Manufacturer) {
@@ -57,4 +63,3 @@ if ($ProviderInstalled) {
         Write-Output "PowershellGet module is missing"; exit 1
     }
 }
-
