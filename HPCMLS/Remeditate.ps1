@@ -1,3 +1,10 @@
+#HP HPCMLS Detection Script 
+#Created by: 
+#Jan Ketil Skanke & Maurice Daly 
+#MSEndpointMgr.com 
+#Start-PowerShellSysNative is inspired by @NickolajA's method to install the HPCMLS module 
+
+#Start remediate
 #This remediation must run in system context and in 64bit powershell. 
 function Start-PowerShellSysNative {
     param (
@@ -29,7 +36,7 @@ function Start-PowerShellSysNative {
     }
 }#endfunction
 
- # Enable TLS 1.2 support for downloading modules from PSGallery
+ # Enable TLS 1.2 support for downloading modules from PSGallery (Required)
  [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 # Validate that script is executed on HP hardware
 $Manufacturer = (Get-WmiObject -Class "Win32_ComputerSystem" | Select-Object -ExpandProperty Manufacturer).Trim()
@@ -130,5 +137,3 @@ if ($PackageProvider.Version -ge "2.8.5"){
         Start-PowerShellSysNative -Arguments "-ExecutionPolicy Bypass $($scriptBlock)"
     }
 }
-
-
