@@ -10,9 +10,9 @@
     Invoke-UnsupportedAppToast.ps1 (Run in the User Context)      
 .NOTES
     FileName:    Invoke-UnsupportedAppToast.ps1
-    Author:      Ben Whitmore
+    Author:      Ben Whitmore @MSEndpointMgr
     Contributor: Jan Ketil Skanke
-    Contact:     @byteben @JankeSkanke @MSEndpointMgr
+    Contact:     @byteben @JankeSkanke 
     Created:     2022-12-Feb
 
     Version history:
