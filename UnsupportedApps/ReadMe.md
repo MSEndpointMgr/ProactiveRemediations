@@ -29,17 +29,13 @@ Several Variables are configurable to customise the toast notification:-
 **$GoodAfternoon** = "Good Afternoon" - Use Regional Language alternative if English is not the first language e.g. "God Ettermiddag"     
 **$GoodEvening** = "Good Evening" - Use Regional Language alternative if English is not the first language e.g. "God Kveld"   
   
-*IMPORTANT: The URI used below is reference only, it wont work in the PR. Upload this hero image to your own, accesible location, perhaps Azure Blob storage, and modify the $ToastImageSource variable in the script to reflect that location.*  
-  
-**$ToastImageSource** = Specify the location of the Toast Hero Image "https://github.com/MSEndpointMgr/ProactiveRemediations/raw/master/UnsupportedApps/heroimage.jpg" #ToastImage should be  364px x 180px 
-  
 *Example Hero Image*  
   
 ![Alt text](https://github.com/MSEndpointMgr/ProactiveRemediations/raw/master/UnsupportedApps/heroimage.jpg)
   
 **$ToastImage** = ToastImageSource is downloaded to this location. Defaul location is User %temp% folder  
 **$ToastDuration** = How long should the Toast notification be displayed before it is moved to the Notification Panel? Short = 7s, Long = 25s  
-**$ToastScenario** = Default Toast scenario is "reminder". Choose from "Default", "Reminder" or "Alarm"  
+**$ToastScenario** = Default Toast scenario is "default". Choose from "Default", "Reminder" or "Alarm"  
 **$ToastTitle** = Toast Title. Default is "Unsupported App(s) Found"  
 **$ToastText** = Toast Text. Default is "Please uninstall the following Adobe applications at your earliest convenience as they pose a security risk to your computer:-"  
 **$SnoozeTitle** = Reminder button title. Default is "Set Reminder"  
