@@ -41,7 +41,7 @@ $CustomHandlerAppID = "CustomToastNotify"
 $GoodMorning = "Good Morning"
 $GoodAfternoon = "Good Afternoon"
 $GoodEvening = "Good Evening"
-$ToastImageSource = "https://github.com/byteben/Toast/raw/master/heroimage.jpg" #ToastImage should be  364px x 180px
+$ToastImageSource = "https://github.com/MSEndpointMgr/ProactiveRemediations/raw/master/UnsupportedApps/heroimage.jpg" #ToastImage should be  364px x 180px
 $ToastImage = Join-Path -Path $ENV:temp -ChildPath "ToastImage.jpg" #ToastImageSource is downloaded to this location
 $ToastDuration = "long" #ToastDuration: Short = 7s, Long = 25s
 $ToastScenario = "default" #ToastScenario: Default | Reminder | Alarm
