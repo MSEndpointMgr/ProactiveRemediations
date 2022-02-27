@@ -48,11 +48,9 @@ The Proactive Remediation should be run in:-
 -The User Context  
 -As a 64bit Application  
   
-Output Example if Bad Apps are found for a device  
-  
-
-  
 **Toast Example**  
+
+![Alt text](https://github.com/MSEndpointMgr/ProactiveRemediations/raw/master/UnsupportedApps/toastexample.jpg)  
   
   $BadApps = @(  
     "JavaFX"  
