@@ -1,7 +1,11 @@
-#HP HPCMLS Detection Script 
+#HP HPCMSL Detection Script 
 #Created by: 
 #Jan Ketil Skanke & Maurice Daly 
 #MSEndpointMgr.com 
+
+#Declarations
+
+$PSRepository = "PSGallery"
 
 #Start Detection
 #Validate that script is executed on HP hardware
@@ -42,7 +46,7 @@ if ($ProviderInstalled) {
                     Write-Output "PowershellGet is Ready"
                     $HPInstalledModule = Get-InstalledModule | Where-Object {$_.Name -match "HPCMSL"} -ErrorAction SilentlyContinue -Verbose:$false
                     if ($HPInstalledModule -ne $null) {
-                        $HPGetLatestModule = Find-Module -Name "HPCMSL" -ErrorAction Stop -Verbose:$false
+                        $HPGetLatestModule = Find-Module -Name "HPCMSL" -Repository $PSRepository -ErrorAction Stop -Verbose:$false
                         if ($HPInstalledModule.Version -lt $HPGetLatestModule.Version) {
                             Write-Output "Newer HPCMSL version detected, update from repository is needed";exit 1
                         } else {
