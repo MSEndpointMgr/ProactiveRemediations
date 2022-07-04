@@ -1,8 +1,12 @@
-#HP HPCMLS Detection Script 
+#HP HPCMSL Detection Script 
 #Created by: 
 #Jan Ketil Skanke & Maurice Daly 
 #MSEndpointMgr.com 
 #Start-PowerShellSysNative is inspired by @NickolajA's method to install the HPCMLS module 
+
+#Declarations
+
+$PSRepository = "PSGallery"
 
 #Start remediate
 #This remediation must run in system context and in 64bit powershell. 
@@ -64,12 +68,12 @@ catch [System.Exception] {
 # Install the latest PowershellGet Module 
 if ($PackageProvider.Version -ge "2.8.5"){
     $PowerShellGetInstalledModule = Get-InstalledModule -Name "PowerShellGet" -ErrorAction SilentlyContinue -Verbose:$false
-    if ($PowerShellGetInstalledModule -ne $null) {
+    if ($null -ne $PowerShellGetInstalledModule) {
         try {
             # Attempt to locate the latest available version of the PowerShellGet module from repository
             Write-Output "Attempting to request the latest PowerShellGet module version from repository" 
-            $PowerShellGetLatestModule = Find-Module -Name "PowerShellGet" -ErrorAction Stop -Verbose:$false
-            if ($PowerShellGetLatestModule -ne $null) {
+            $PowerShellGetLatestModule = Find-Module -Name "PowerShellGet" -Repository $PSRepository -ErrorAction Stop -Verbose:$false
+            if ($null -ne $PowerShellGetLatestModule) {
                 if ($PowerShellGetInstalledModule.Version -lt $PowerShellGetLatestModule.Version) {
                     try {
                         # Newer module detected, attempt to update
@@ -93,9 +97,9 @@ if ($PackageProvider.Version -ge "2.8.5"){
             # PowerShellGet module was not found, attempt to install from repository
             Write-Output "PowerShellGet module was not found, attempting to install it including dependencies from repository" 
             Write-Output "Attempting to install PackageManagement module from repository" 
-            Install-Module -Name "PackageManagement" -Force -Scope AllUsers -AllowClobber -ErrorAction Stop -Verbose:$false
+            Install-Module -Name "PackageManagement" -Repository $PSRepository -Force -Scope AllUsers -AllowClobber -ErrorAction Stop -Verbose:$false
             Write-Output "Attempting to install PowerShellGet module from repository" 
-            Install-Module -Name "PowerShellGet" -Force -Scope AllUsers -AllowClobber -ErrorAction Stop -Verbose:$false
+            Install-Module -Name "PowerShellGet" -Repository $PSRepository -Force -Scope AllUsers -AllowClobber -ErrorAction Stop -Verbose:$false
         }
         catch [System.Exception] {
             Write-Output "Unable to install PowerShellGet module from repository. Error message: $($_.Exception.Message)"; exit 1
@@ -104,8 +108,8 @@ if ($PackageProvider.Version -ge "2.8.5"){
     
     #Install the latest HPCMSL Module
     $HPInstalledModule = Get-InstalledModule | Where-Object {$_.Name -match "HPCMSL"} -ErrorAction SilentlyContinue -Verbose:$false
-    if ($HPInstalledModule -ne $null) {
-        $HPGetLatestModule = Find-Module -Name "HPCMSL" -ErrorAction Stop -Verbose:$false
+    if ($null -ne $HPInstalledModule) {
+        $HPGetLatestModule = Find-Module -Name "HPCMSL" -Repository $PSRepository -ErrorAction Stop -Verbose:$false
         if ($HPInstalledModule.Version -lt $HPGetLatestModule.Version) {
             Write-Output "Newer HPCMSL version detected, updating from repository"
             $scriptBlock = {
@@ -128,7 +132,7 @@ if ($PackageProvider.Version -ge "2.8.5"){
             try {
                 # Install HP Client Management Script Library
                 Write-Output -Value "Attempting to install HPCMSL module from repository" 
-                Install-Module -Name "HPCMSL" -AcceptLicense -Force -ErrorAction Stop -Verbose:$false
+                Install-Module -Name "HPCMSL" -Repository $PSRepository -AcceptLicense -Force -ErrorAction Stop -Verbose:$false
             } 
             catch [System.Exception] {
                 Write-OutPut -Value "Unable to install HPCMSL module from repository. Error message: $($_.Exception.Message)"; exit 1
