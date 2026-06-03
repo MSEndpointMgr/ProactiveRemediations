@@ -40,7 +40,7 @@ This solution provides a detection script for identifying applications that depe
 
 ```
 +----------------------------------------------------------+
-|                    Microsoft Intune                       |
+|                    Microsoft Intune                      |
 |                      Remediations                        |
 +----------------------------------------------------------+
                            |
@@ -52,11 +52,11 @@ This solution provides a detection script for identifying applications that depe
                     | Exit 1 = Fix|--- .NET 6.x apps detected
                     +-------------+
                            |
-                    +------v------+
-                    |   Report    |
+                    +------v-------+
+                    |   Report     |
                     | Non-Compliant|
-                    |   Devices   |
-                    +-------------+
+                    |   Devices    |
+                    +--------------+
 ```
 
 ### Detection Methods
