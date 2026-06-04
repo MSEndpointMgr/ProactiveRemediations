@@ -2,8 +2,8 @@
 
 This guide covers the practical use of the detection script suites for unsupported runtime dependencies. Two suites exist with identical operational patterns:
 
-- **DotNetDetect** -- finds applications depending on end-of-life .NET 6.x
-- **VCRedistDetect** -- finds applications depending on unsupported Visual C++ runtimes (2005-2013) and outdated VC++ 14.x packages
+- **Detect-DotNet6Apps.ps1** -- finds applications depending on end-of-life .NET 6.x
+- **Detect-LegacyVCRedist.ps1** -- finds applications depending on unsupported Visual C++ runtimes (2005-2013) and outdated VC++ 14.x packages
 
 Each suite consists of three scripts that form a pipeline: Detect (runs on devices), Parse (extracts structured data from Intune export), and Analyze (produces prioritised remediation intelligence).
 
