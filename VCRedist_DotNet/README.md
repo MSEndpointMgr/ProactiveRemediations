@@ -2,8 +2,8 @@
 
 This guide covers the practical use of the detection script suites for unsupported runtime dependencies. Two suites exist with identical operational patterns:
 
-- **MWPW_PRD_DotNetDetect** -- finds applications depending on end-of-life .NET 6.x
-- **MWPW_PRD_VCRedistDetect** -- finds applications depending on unsupported Visual C++ runtimes (2005-2013) and outdated VC++ 14.x packages
+- **DotNetDetect** -- finds applications depending on end-of-life .NET 6.x
+- **VCRedistDetect** -- finds applications depending on unsupported Visual C++ runtimes (2005-2013) and outdated VC++ 14.x packages
 
 Each suite consists of three scripts that form a pipeline: Detect (runs on devices), Parse (extracts structured data from Intune export), and Analyze (produces prioritised remediation intelligence).
 
