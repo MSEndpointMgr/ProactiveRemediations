@@ -1,7 +1,11 @@
-#HP HPCMLS Detection Script 
+#HP HPCMSL Detection Script 
 #Created by: 
 #Jan Ketil Skanke & Maurice Daly 
 #MSEndpointMgr.com 
+
+#Declarations
+
+$PSRepository = "PSGallery"
 
 #Start Detection
 #Validate that script is executed on HP hardware
@@ -30,19 +34,19 @@ if ($Providers.Name -notcontains "NuGet") {
 
 if ($ProviderInstalled) {
     $PowerShellGetInstalledModule = Get-InstalledModule -Name "PowerShellGet" -ErrorAction SilentlyContinue -Verbose:$false
-    if ($PowerShellGetInstalledModule -ne $null) {
+    if ($null -ne $PowerShellGetInstalledModule) {
         try {
             # Attempt to locate the latest available version of the PowerShellGet module from repository
             Write-Output "Attempting to request the latest PowerShellGet module version from repository" 
             $PowerShellGetLatestModule = Find-Module -Name "PowerShellGet" -ErrorAction Stop -Verbose:$false
-            if ($PowerShellGetLatestModule -ne $null) {
+            if ($null -ne $PowerShellGetLatestModule) {
                 if ($PowerShellGetInstalledModule.Version -lt $PowerShellGetLatestModule.Version) {
                     Write-Output "Newer PowerShellGet version detected, update from repository is needed";exit 1
                 } else {
                     Write-Output "PowershellGet is Ready"
                     $HPInstalledModule = Get-InstalledModule | Where-Object {$_.Name -match "HPCMSL"} -ErrorAction SilentlyContinue -Verbose:$false
-                    if ($HPInstalledModule -ne $null) {
-                        $HPGetLatestModule = Find-Module -Name "HPCMSL" -ErrorAction Stop -Verbose:$false
+                    if ($null -ne $HPInstalledModule) {
+                        $HPGetLatestModule = Find-Module -Name "HPCMSL" -Repository $PSRepository -ErrorAction Stop -Verbose:$false
                         if ($HPInstalledModule.Version -lt $HPGetLatestModule.Version) {
                             Write-Output "Newer HPCMSL version detected, update from repository is needed";exit 1
                         } else {
